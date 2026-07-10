@@ -24,7 +24,7 @@ const userScehma = new mongoose.Schema({
 		type: String,
 		default: "",
 	},
-});
+}, { timestamps: true });
 
 // signup example { username: "john_doe", fullName: "John Doe", password: "password123" ,confirmPassword: "password123", gender: "male" }
 
