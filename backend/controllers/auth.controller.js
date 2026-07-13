@@ -20,10 +20,10 @@ export const signup = async (req, res) => {
 		// hash the password before saving to the database
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
-		// https://avatarapi.runflare.run/
+		// https://avatar.iran.liara.run/public
 
-		const boyProfilePic = `https://avatarapi.runflare.run/boy?username=${username}`;
-		const girlProfilePic = `https://avatarapi.runflare.run/girl?username=${username}`;
+		const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
+		const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
 		const newUser = new User({
 			fullName,
