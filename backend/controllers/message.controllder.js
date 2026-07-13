@@ -51,7 +51,7 @@ export const getMessages = async (req, res) => {
 		}).populate("messages"); // NOT REFERANCE but actual messages will be populated in the conversation object
 
 		if (!conversation) {
-			return res.status(404).json({ error: "Conversation not found" });
+			return res.status(200).json([]);
 		}
 
 		const messages = conversation.messages;
