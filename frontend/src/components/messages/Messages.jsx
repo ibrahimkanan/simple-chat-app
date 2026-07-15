@@ -1,7 +1,7 @@
 // Messages.jsx
 import Message from "./Message";
 import useGetMessages from "../../hooks/useGetMessages";
-import MessageSkeleton from "../skeletons/messageSkeleton";
+import MessageSkeleton from "../skeletons/MessageSkeleton";
 import { useEffect, useRef } from "react";
 import useListenMessages from "../../hooks/useListenMessages";
 
