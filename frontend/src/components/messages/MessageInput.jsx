@@ -8,7 +8,7 @@ const MessageInput = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        if (!message) return;
+        if (!message || loading) return;
         await sendMessage(message);
         setMessage("");
     };
@@ -22,12 +22,14 @@ const MessageInput = () => {
                     placeholder="Send a message"
                     value={message}
                     onChange={(e) => setMessage(e.target.value)}
+                    disabled={loading}
                 />
                 <button
                     type="submit"
                     className="absolute inset-y-0 end-0 flex items-center pe-3"
+                    disabled={loading}
                 >
-                    {loading ? <div className="loading"></div> : <BsSend />}
+                    {loading ? <div className="loading loading-spinner"></div> : <BsSend />}
                 </button>
             </div>
         </form>

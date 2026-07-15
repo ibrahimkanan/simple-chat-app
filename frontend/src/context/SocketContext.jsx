@@ -1,10 +1,14 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 import { useAuthContext } from "./AuthContext";
 import io from "socket.io-client";
 
 export const SocketContext = createContext();
 
-export const SocketProvider = ({ children }) => {
+export const useSocketContext = () => {
+    return useContext(SocketContext);
+};
+
+export const SocketContextProvider = ({ children }) => {
     const [socket, setSocket] = useState(null);
     const [onlineUsers, setOnlineUsers] = useState([]);
     const { authUser } = useAuthContext();
@@ -15,6 +19,7 @@ export const SocketProvider = ({ children }) => {
                 query: {
                     userId: authUser._id,
                 },
+                transports: ["websocket"],
             });
 
             setSocket(socket);
@@ -30,7 +35,7 @@ export const SocketProvider = ({ children }) => {
                 setSocket(null);
             }
         }
-    }, []);
+    }, [authUser]);
 
     return (
         <SocketContext.Provider value={{ socket, onlineUsers }}>
